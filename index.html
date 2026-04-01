@@ -3,111 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packet Sentinel | SOC Analyst Portfolio</title>
+    <title>Packet Sentinel | Security Research Lab</title>
     
     <style>
         body {
-            /* 1. Dark, "Cyber" colors (charcoal background) */
-            background-color: #121212;
-            color: #d8dee9; /* Light, readable text color */
-            font-family: 'Courier New', Courier, monospace; /* Monospace for that "code" feel */
+            background-color: #0d0f14; 
+            color: #b0bec5; 
+            font-family: 'Consolas', 'Monaco', monospace;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
-        /* 2. The dynamic "Digital Flow" background effect */
-        #background-canvas {
+        /* Subtle Technical Grid Background */
+        body::before {
+            content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Puts it behind everything else */
-            opacity: 0.15; /* Makes it subtle, so the text is clear */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
         }
 
-        /* 3. The main "Hero" header area */
         header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(180deg, rgba(10, 10, 10, 0.9) 0%, rgba(18, 18, 18, 0.7) 100%);
+            text-align: left;
+            padding: 60px 10% 30px 10%;
+            background: linear-gradient(to bottom, #11141b, transparent);
         }
 
-        /* 4. The "Cyber Security" green glow for your title */
         h1 {
-            color: #00ff7f; /* Fluorescent Green */
-            text-shadow: 0 0 10px rgba(0, 255, 127, 0.7); /* Glowing text effect */
-            font-size: 3em;
+            color: #00e5ff; /* Sentinel Cyan */
+            font-size: 2.8em;
             margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
         }
 
-        /* 5. A subtle "Scanning" line (an animation) */
-        @keyframes scan {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100vh); }
-        }
-        .scanner-line {
-            width: 100%;
-            height: 2px;
-            background-color: rgba(0, 255, 127, 0.2);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 999;
-            pointer-events: none; /* Make sure you can still click things */
-            animation: scan 10s linear infinite;
+        .subtitle {
+            font-size: 1.1em;
+            color: #88c0d0;
+            margin-top: 5px;
+            border-left: 2px solid #00e5ff;
+            padding-left: 15px;
         }
 
-        /* 6. Basic styling for your content area */
+        /* Blue Team Status Indicator */
+        .status-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 0.85em;
+            background: rgba(0, 229, 255, 0.05);
+            padding: 8px 15px;
+            border-radius: 4px;
+            width: fit-content;
+            border: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #00ff7f;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ff7f;
+            animation: pulse-animation 2.5s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
         main {
             max-width: 900px;
             margin: 40px auto;
-            padding: 20px;
-            background-color: rgba(20, 20, 20, 0.9);
-            border: 1px solid #333; /* Subtle dark border */
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            padding: 0 20px;
         }
-        h2 { color: #88c0d0; /* A clean blue for subheadings */ }
-        a { color: #00ff7f; text-decoration: none; }
+
+        .lab-card {
+            background: rgba(17, 21, 28, 0.7);
+            border: 1px solid #1f242d;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.2s;
+        }
+
+        .lab-card:hover {
+            border-color: #00e5ff;
+            transform: translateX(5px);
+        }
+
+        h2 { color: #ffffff; border-bottom: 1px solid #1f242d; padding-bottom: 10px; }
+        h3 { color: #00e5ff; margin-bottom: 10px; }
+        
+        a { color: #00e5ff; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
+
+        .tag {
+            font-size: 0.75em;
+            color: #00e5ff;
+            border: 1px solid #00e5ff;
+            padding: 2px 8px;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
 
-    <canvas id="background-canvas"></canvas>
-    
-    <div class="scanner-line"></div>
-
     <header>
         <h1>Packet Sentinel</h1>
-        <p>SOC Analyst Portfolio | Journey to Cyber Defense</p>
+        <div class="subtitle">Defensive Security Research & Home Lab Documentation</div>
+        
+        <div class="status-container">
+            <div class="pulse-dot"></div>
+            <span>MONITORING LIVE TRAFFIC // LAB UPTIME: 99.9%</span>
+        </div>
     </header>
 
     <main>
-        <h2>Welcome to my SOC Lab</h2>
-        <p>This is where I document my technical journey. I’m building skills in network monitoring, incident response, and threat analysis. Select a project below:</p>
-        
-        <hr>
+        <section>
+            <h2>Mission Log</h2>
+            <p>I am a dedicated <strong>Security Researcher</strong> focused on blue-team operations. This site serves as a live repository of my technical journey as I build the skills required for the modern SOC.</p>
+        </section>
 
-        <h3>Latest Analysis Reports</h3>
-        <ul>
-            <li>Coming Soon: [Windows Event Log Analysis Lab]</li>
-            <li>Coming Soon: [Malware Traffic Analysis (PCAP) Report]</li>
-        </ul>
+        <section style="margin-top: 40px;">
+            <h2>Lab Deployments</h2>
+            
+            <div class="lab-card">
+                <h3><span class="tag">Environment</span> Proxmox Virtualization</h3>
+                <p>Architecting a segmented network for safe malware analysis and traffic inspection.</p>
+                <a href="#">View Network Topology →</a>
+            </div>
 
-        <h3>Home Lab Configurations</h3>
-        <ul>
-            <li><a href="https://packetsentinel.com/proxmox-setup">Building my Virtualized Lab in Proxmox</a></li>
-            <li>Coming Soon: [Setting up pfSense Firewall Rules]</li>
-        </ul>
+            <div class="lab-card">
+                <h3><span class="tag">Analysis</span> PCAP & Traffic Investigation</h3>
+                <p>Documenting findings from Malware Traffic Analysis exercises and Snort rule testing.</p>
+                <a href="#">Read Latest Report →</a>
+            </div>
+        </section>
     </main>
 
-    <script>
-        // ... (This script would generate a flowing binary matrix effect.
-        // It's not included in this static HTML, but I can provide it if you want the 'movement'.)
-    </script>
 </body>
 </html>
