@@ -3,80 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packet Sentinel | Security Research Lab</title>
+    <title>Packet Sentinel | Portfolio</title>
     
     <style>
+        :root {
+            --bg-color: #0b0e14;
+            --accent-blue: #00d2ff; /* Blue Team Cyan */
+            --border-dim: #1e293b;
+            --text-main: #cbd5e1;
+        }
+
         body {
-            background-color: #0d0f14; 
-            color: #b0bec5; 
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Consolas', 'Monaco', monospace;
             margin: 0;
-            padding: 0;
             line-height: 1.6;
         }
 
-        /* Subtle Technical Grid Background */
+        /* Subtle "Radar Grid" Background */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(0, 210, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 210, 255, 0.02) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
         }
 
         header {
-            text-align: left;
-            padding: 60px 10% 30px 10%;
-            background: linear-gradient(to bottom, #11141b, transparent);
+            padding: 60px 10% 20px 10%;
+            border-bottom: 1px solid var(--border-dim);
         }
 
         h1 {
-            color: #00e5ff; /* Sentinel Cyan */
-            font-size: 2.8em;
+            color: var(--accent-blue);
+            font-size: 2.5rem;
             margin: 0;
-            letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .subtitle {
-            font-size: 1.1em;
+        /* Accurate Professional Branding */
+        .professional-title {
             color: #88c0d0;
             margin-top: 5px;
-            border-left: 2px solid #00e5ff;
-            padding-left: 15px;
+            font-size: 1rem;
         }
 
-        /* Blue Team Status Indicator */
-        .status-container {
-            display: flex;
+        /* The Pulse: A Blue Team "Monitoring" indicator */
+        .status-indicator {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 20px;
-            font-size: 0.85em;
-            background: rgba(0, 229, 255, 0.05);
-            padding: 8px 15px;
-            border-radius: 4px;
-            width: fit-content;
-            border: 1px solid rgba(0, 229, 255, 0.1);
+            gap: 10px;
+            font-size: 0.75rem;
+            background: rgba(0, 210, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            margin-top: 15px;
         }
 
         .pulse-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #00ff7f;
+            width: 8px; height: 8px;
+            background: #00ff7f;
             border-radius: 50%;
             box-shadow: 0 0 8px #00ff7f;
-            animation: pulse-animation 2.5s infinite;
+            animation: pulse-kf 2s infinite;
         }
 
-        @keyframes pulse-animation {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.1); }
-            100% { opacity: 1; transform: scale(1); }
+        @keyframes pulse-kf {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
 
         main {
@@ -85,32 +87,26 @@
             padding: 0 20px;
         }
 
-        .lab-card {
+        .lab-section {
             background: rgba(17, 21, 28, 0.7);
-            border: 1px solid #1f242d;
+            border: 1px solid var(--border-dim);
             padding: 25px;
-            margin-bottom: 25px;
-            transition: transform 0.2s;
+            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 30px;
         }
 
-        .lab-card:hover {
-            border-color: #00e5ff;
-            transform: translateX(5px);
-        }
-
-        h2 { color: #ffffff; border-bottom: 1px solid #1f242d; padding-bottom: 10px; }
-        h3 { color: #00e5ff; margin-bottom: 10px; }
+        h2 { color: #fff; font-size: 1.2rem; margin-top: 0; }
         
-        a { color: #00e5ff; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
+        a { color: var(--accent-blue); text-decoration: none; font-weight: bold; }
+        a:hover { border-bottom: 1px solid var(--accent-blue); }
 
         .tag {
-            font-size: 0.75em;
-            color: #00e5ff;
-            border: 1px solid #00e5ff;
+            font-size: 0.7rem;
+            background: #1e293b;
+            color: var(--accent-blue);
             padding: 2px 8px;
-            margin-right: 10px;
-            text-transform: uppercase;
+            margin-right: 5px;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -119,34 +115,33 @@
 
     <header>
         <h1>Packet Sentinel</h1>
-        <div class="subtitle">Defensive Security Research & Home Lab Documentation</div>
+        <div class="professional-title">IT Specialist // Cyber Defense Transition Lab</div>
         
-        <div class="status-container">
+        <div class="status-indicator">
             <div class="pulse-dot"></div>
-            <span>MONITORING LIVE TRAFFIC // LAB UPTIME: 99.9%</span>
+            <span>DEFENSIVE TELEMETRY ACTIVE</span>
         </div>
     </header>
 
     <main>
-        <section>
-            <h2>Mission Log</h2>
-            <p>I am a dedicated <strong>Security Researcher</strong> focused on blue-team operations. This site serves as a live repository of my technical journey as I build the skills required for the modern SOC.</p>
+        <section class="lab-section">
+            <h2>Current Deployment: Proxmox Networking</h2>
+            <p>Configuring and documenting virtualized network bridges (vmbr0/vmbr1) to simulate enterprise-scale defensive environments.</p>
+            <div>
+                <span class="tag">PROXMOX</span>
+                <span class="tag">NETWORKING</span>
+            </div>
+            <p style="margin-top: 20px;"><a href="#">Review Lab Topology →</a></p>
         </section>
 
-        <section style="margin-top: 40px;">
-            <h2>Lab Deployments</h2>
-            
-            <div class="lab-card">
-                <h3><span class="tag">Environment</span> Proxmox Virtualization</h3>
-                <p>Architecting a segmented network for safe malware analysis and traffic inspection.</p>
-                <a href="#">View Network Topology →</a>
+        <section class="lab-section">
+            <h2>Analysis Reports</h2>
+            <p>Practical application of Wireshark and IDS logging to identify threat patterns within my isolated lab network.</p>
+            <div>
+                <span class="tag">WIRESHARK</span>
+                <span class="tag">BLUE TEAM</span>
             </div>
-
-            <div class="lab-card">
-                <h3><span class="tag">Analysis</span> PCAP & Traffic Investigation</h3>
-                <p>Documenting findings from Malware Traffic Analysis exercises and Snort rule testing.</p>
-                <a href="#">Read Latest Report →</a>
-            </div>
+            <p style="margin-top: 20px;"><a href="#">View Mission Reports →</a></p>
         </section>
     </main>
 
