@@ -8,9 +8,10 @@
     <style>
         :root {
             --bg-color: #0b0e14;
-            --accent-blue: #00d2ff; /* Blue Team Cyan */
+            --accent-blue: #00d2ff;
             --border-dim: #1e293b;
             --text-main: #cbd5e1;
+            --text-bright: #ffffff;
         }
 
         body {
@@ -21,7 +22,7 @@
             line-height: 1.6;
         }
 
-        /* Subtle "Radar Grid" Background */
+        /* Radar Grid Background */
         body::before {
             content: "";
             position: fixed;
@@ -35,45 +36,33 @@
         }
 
         header {
-            padding: 60px 10% 20px 10%;
+            padding: 80px 10% 40px 10%;
             border-bottom: 1px solid var(--border-dim);
         }
 
         h1 {
             color: var(--accent-blue);
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
         }
 
-        /* Describes the work/goal without using job titles */
-        .professional-title {
-            color: #88c0d0;
-            margin-top: 5px;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* The Pulse: A Blue Team "Monitoring" indicator */
         .status-indicator {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.75rem;
-            background: rgba(0, 210, 255, 0.05);
-            padding: 5px 12px;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 210, 255, 0.1);
-            margin-top: 15px;
+            font-size: 0.8rem;
             color: #00ff7f;
+            margin-top: 20px;
+            text-transform: uppercase;
         }
 
         .pulse-dot {
             width: 8px; height: 8px;
             background: #00ff7f;
             border-radius: 50%;
-            box-shadow: 0 0 8px #00ff7f;
+            box-shadow: 0 0 10px #00ff7f;
             animation: pulse-kf 2s infinite;
         }
 
@@ -89,6 +78,20 @@
             padding: 0 20px;
         }
 
+        /* About Section - No fluff */
+        .about-section {
+            margin-bottom: 50px;
+            padding: 20px;
+            border-left: 2px solid var(--border-dim);
+        }
+
+        .about-section h2 {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
         .lab-section {
             background: rgba(17, 21, 28, 0.7);
             border: 1px solid var(--border-dim);
@@ -97,7 +100,7 @@
             margin-bottom: 30px;
         }
 
-        h2 { color: #fff; font-size: 1.2rem; margin-top: 0; }
+        h2, h3 { color: var(--text-bright); margin-top: 0; }
         
         a { color: var(--accent-blue); text-decoration: none; font-weight: bold; }
         a:hover { border-bottom: 1px solid var(--accent-blue); }
@@ -117,33 +120,46 @@
 
     <header>
         <h1>Packet Sentinel</h1>
-        <div class="professional-title">SOC Readiness Lab // Defensive Security Operations</div>
         
         <div class="status-indicator">
             <div class="pulse-dot"></div>
-            <span>PROJECT: BLUE TEAM TRANSITION</span>
+            <span>NODE_STATUS: ACTIVE</span>
         </div>
     </header>
 
     <main>
+        <section class="about-section">
+            <h2>About</h2>
+            <p>
+                I am an IT Specialist building a technical portfolio focused on Blue Team operations and network defense. 
+                This site serves as a central repository for my research, lab configurations, and traffic analysis reports.
+            </p>
+            <p>
+                My current objective is to deepen my understanding of incident response and security telemetry 
+                through hands-on simulation and environmental hardening.
+            </p>
+        </section>
+
+        <h3>Lab Documentation</h3>
+
         <section class="lab-section">
-            <h2>Current Deployment: Proxmox Networking</h2>
-            <p>Configuring and documenting virtualized network bridges (vmbr0/vmbr1) to simulate enterprise-scale defensive environments.</p>
+            <h2>Proxmox Infrastructure</h2>
+            <p>Deployment of a virtualized security stack using segmented bridges to monitor and isolate network traffic.</p>
             <div>
-                <span class="tag">PROXMOX</span>
+                <span class="tag">VIRTUALIZATION</span>
                 <span class="tag">NETWORKING</span>
             </div>
-            <p style="margin-top: 20px;"><a href="#">Review Lab Topology →</a></p>
+            <p style="margin-top: 20px;"><a href="#">View Lab Details →</a></p>
         </section>
 
         <section class="lab-section">
-            <h2>Analysis Reports</h2>
-            <p>Practical application of Wireshark and IDS logging to identify threat patterns within my isolated lab network.</p>
+            <h2>Threat Analysis</h2>
+            <p>Detailed investigation of network captures and system logs to identify indicators of compromise (IoCs).</p>
             <div>
                 <span class="tag">WIRESHARK</span>
                 <span class="tag">BLUE TEAM</span>
             </div>
-            <p style="margin-top: 20px;"><a href="#">View Mission Reports →</a></p>
+            <p style="margin-top: 20px;"><a href="#">Read Analysis Logs →</a></p>
         </section>
     </main>
 
