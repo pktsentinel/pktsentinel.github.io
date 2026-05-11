@@ -49,7 +49,7 @@ hr {
 
 <div class="container">
 
-<h1>In the skills assessment, you are in the role of a junior incident responder and need to perform some tasks.</h1>
+<h1>In the skills assessment, I am taking the role of a junior incident responder.</h1>
 
 <h2>Triaging alerts</h2>
 
@@ -67,7 +67,7 @@ Create a new case in TheHive. Find all the alerts that are specific to the Insig
 I began by creating a case with a title of "Insights Nexus Breach - Initial Triage & Investigation"
 </p>
 
-<img src="images/case-setup.png" alt="Case Setup">
+<img src="Screenshot 2026-05-10 162111" alt="Case Setup">
 
 <p>[Severity has been set to: CRITICAL]</p>
 <ul>
@@ -97,7 +97,7 @@ I began by creating a case with a title of "Insights Nexus Breach - Initial Tria
 Investigation into Insight Nexus breach. Detected Mimikatz and an unauthorized Admin login via ManageEngine.
 </p>
 
-<img src="images/case-desc.png" alt="Case Description">
+<img src="Screenshot 2026-05-10 183831" alt="Case Description">
 
 <hr>
 
@@ -107,8 +107,8 @@ Investigation into Insight Nexus breach. Detected Mimikatz and an unauthorized A
 Perform triage, enrichment, and correlation in TheHive. In the notes of an alert, you can add useful information for enrichment.
 </p>
 
-<img src="images/alert-1.png">
-<img src="images/alert-2.png">
+<img src="Screenshot 2026-05-10 190218">
+<img src="Screenshot 2026-05-10 190247">
 
 <h3>Alerts that are specific to Insights Nexus breach</h3>
 
@@ -116,7 +116,7 @@ Perform triage, enrichment, and correlation in TheHive. In the notes of an alert
 <li>I have linked two alerts related to the Insight Nexus.</li>
 </ul>
 
-<img src="images/linked-alerts.png">
+<img src="Screenshot 2026-05-10 185452">
 
 <p>
 As seen on the snip we have two linked alerts and four observables.
@@ -146,8 +146,7 @@ TCP    10.10.5.23:49678       10.10.5.17:445         ESTABLISHED     5420
 TCP    10.10.5.23:49679       10.10.5.18:445         TIME_WAIT       5420
 </pre>
 
-<img src="images/netstat-1.png">
-<img src="images/netstat-2.png">
+<img src="Screenshot 2026-05-10 194159">
 
 <p>
 In the netstat command, there are two unusual IP addresses: 198.51.100.24 and 203.0.113.18. These are special documentation IP ranges, not normally used on the internet. 198.51.100.24 uses port 443, suggesting HTTPS-based exfiltration. 203.0.113.18 uses port 4444, commonly associated with C2 or reverse shell activity.
