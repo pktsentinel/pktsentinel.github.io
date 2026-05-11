@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTB Triage Report | Packet Sentinel</title>
+
+<style>
+:root {
+    --bg: #0b0e14;
+    --blue: #00d2ff;
+    --border: #1e293b;
+    --text: #cbd5e1;
+    --white: #ffffff;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Consolas, monospace;
+    margin: 0;
+    padding: 40px;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+}
+
+h1 {
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+h2 {
+    color: var(--white);
+    margin-top: 40px;
+}
+
+.section {
+    background: rgba(17, 21, 28, 0.7);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    margin: 3px;
+    background: #1e293b;
+    color: var(--blue);
+    border-radius: 3px;
+}
+
+pre {
+    background: #0a0f18;
+    padding: 15px;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+img {
+    width: 100%;
+    margin-top: 15px;
+    border: 1px solid var(--border);
+}
+
+.back {
+    display: inline-block;
+    margin-top: 30px;
+    color: var(--blue);
+    text-decoration: none;
+}
+.back:hover {
+    border-bottom: 1px solid var(--blue);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>HTB: Insights Nexus – Triage Report</h1>
+
+<p>
+Junior Incident Response assessment focusing on alert triage, enrichment, and MITRE ATT&CK mapping within a suspected enterprise compromise.
+</p>
+
+---
+
+## Case Creation (TheHive)
+
+<div class="section">
+
+<h2>Initial Case Setup</h2>
+
+<p><b>Case Title:</b> Insights Nexus Breach - Initial Triage & Investigation</p>
+
+<p><b>Severity:</b> CRITICAL</p>
+<p>
+Evidence indicates credential dumping activity (Mimikatz) and unauthorized administrative login via web console.
+</p>
+
+<p><b>TLP:</b> AMBER (restricted internal sharing)</p>
+<p><b>PAP:</b> AMBER (enrichment allowed with caution)</p>
+
+<div>
+<span class="tag">Credential Dumping</span>
+<span class="tag">Insights Nexus</span>
+<span class="tag">Mimikatz</span>
+</div>
+
+<p><b>Description:</b><br>
+Investigation into Insights Nexus breach involving suspected credential dumping and unauthorized admin access via ManageEngine.
+</p>
+
+</div>
+
+---
+
+## Alert Correlation
+
+<div class="section">
+
+<h2>Linked Alerts</h2>
+
+<p>
+Two alerts were identified and linked within TheHive as part of the same intrusion chain.
+</p>
+
+<img src="images/alerts-linked.png" alt="Linked Alerts Screenshot">
+
+<p>Four observables were extracted for enrichment and correlation.</p>
+
+</div>
+
+---
+
+## External IP Analysis
+
+<div class="section">
+
+<h2>Netstat Investigation</h2>
+
+<p>
+Alert ~169058392 contained network telemetry captured after domain rejoin at ~15:42:35.
+</p>
+
+<pre>
+Proto  Local Address          Foreign Address        State
+TCP    10.10.5.23:52344       198.51.100.24:443     ESTABLISHED
+TCP    10.10.5.23:52345       203.0.113.18:4444     ESTABLISHED
+</pre>
+
+<p>
+Two suspicious external IPs were identified:
+</p>
+
+<ul>
+<li><b>198.51.100.24</b> – HTTPS (443) likely used for encrypted exfiltration</li>
+<li><b>203.0.113.18</b> – Port 4444 commonly associated with C2 / reverse shells</li>
+</ul>
+
+<p>
+These ranges are reserved documentation IPs, often used in simulated attack environments.
+</p>
+
+</div>
+
+---
+
+## Attack Chain Mapping (MITRE ATT&CK)
+
+<div class="section">
+
+<h2>Kill Chain Breakdown</h2>
+
+<ul>
+<li><b>Attachment opened</b> → Initial Access → T1566.001 (Spearphishing Attachment)</li>
+<li><b>Downloader executes file in AppData</b> → Execution → T1204.002 (User Execution)</li>
+<li><b>Registry Run key created</b> → Persistence → T1547.001</li>
+<li><b>VaultCli.dll loaded</b> → Credential Access → T1003</li>
+<li><b>Credential exfiltration</b> → Exfiltration → T1041</li>
+</ul>
+
+</div>
+
+---
+
+## Mimikatz Analysis
+
+<div class="section">
+
+<h2>Credential Dumping Activity</h2>
+
+<p>
+The Mimikatz alert confirmed LSASS memory dumping behavior consistent with credential harvesting.
+</p>
+
+<ul>
+<li><b>Technique:</b> T1003 (OS Credential Dumping)</li>
+<li><b>Sub-technique:</b> T1003.001 (LSASS Memory)</li>
+</ul>
+
+</div>
+
+---
+
+<a class="back" href="index.html">← Back to Portfolio</a>
+
+</div>
+
+</body>
+</html>
