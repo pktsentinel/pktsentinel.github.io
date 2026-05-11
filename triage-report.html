@@ -3,82 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTB Triage Report | Packet Sentinel</title>
+<title>HTB Triage Report</title>
 
 <style>
-:root {
-    --bg: #0b0e14;
-    --blue: #00d2ff;
-    --border: #1e293b;
-    --text: #cbd5e1;
-    --white: #ffffff;
+body {
+    background-color: #0b0e14;
+    color: #cbd5e1;
+    font-family: Consolas, monospace;
+    padding: 40px;
+    line-height: 1.6;
 }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Consolas, monospace;
-    margin: 0;
-    padding: 40px;
-    line-height: 1.7;
+h1, h2, h3 {
+    color: #00d2ff;
 }
 
 .container {
-    max-width: 950px;
+    max-width: 1000px;
     margin: auto;
-}
-
-h1 {
-    color: var(--blue);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-h2 {
-    color: var(--white);
-    margin-top: 40px;
-}
-
-.section {
-    background: rgba(17, 21, 28, 0.7);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--blue);
-    padding: 20px;
-    margin-top: 20px;
-}
-
-.tag {
-    display: inline-block;
-    font-size: 12px;
-    padding: 2px 8px;
-    margin: 3px;
-    background: #1e293b;
-    color: var(--blue);
-    border-radius: 3px;
 }
 
 pre {
     background: #0a0f18;
     padding: 15px;
-    border: 1px solid var(--border);
+    border: 1px solid #1e293b;
     overflow-x: auto;
 }
 
 img {
-    width: 100%;
-    margin-top: 15px;
-    border: 1px solid var(--border);
+    max-width: 100%;
+    border: 1px solid #1e293b;
+    margin: 10px 0;
 }
 
-.back {
-    display: inline-block;
-    margin-top: 30px;
-    color: var(--blue);
-    text-decoration: none;
+hr {
+    border: 0;
+    border-top: 1px solid #1e293b;
+    margin: 20px 0;
 }
-.back:hover {
-    border-bottom: 1px solid var(--blue);
-}
+
 </style>
 </head>
 
@@ -86,133 +49,134 @@ img {
 
 <div class="container">
 
-<h1>HTB: Insights Nexus – Triage Report</h1>
+<h1>In the skills assessment, you are in the role of a junior incident responder and need to perform some tasks.</h1>
+
+<h2>Triaging alerts</h2>
+
+<hr>
+
+<h3>Task 1</h3>
 
 <p>
-Junior Incident Response assessment focusing on alert triage, enrichment, and MITRE ATT&CK mapping within a suspected enterprise compromise.
+Create a new case in TheHive. Find all the alerts that are specific to the Insights Nexus breach scenario, and link the alerts in the case. This exercise introduces you to work in TheHive alerts and cases.
 </p>
 
----
-
-## Case Creation (TheHive)
-
-<div class="section">
-
-<h2>Initial Case Setup</h2>
-
-<p><b>Case Title:</b> Insights Nexus Breach - Initial Triage & Investigation</p>
-
-<p><b>Severity:</b> CRITICAL</p>
-<p>
-Evidence indicates credential dumping activity (Mimikatz) and unauthorized administrative login via web console.
-</p>
-
-<p><b>TLP:</b> AMBER (restricted internal sharing)</p>
-<p><b>PAP:</b> AMBER (enrichment allowed with caution)</p>
-
-<div>
-<span class="tag">Credential Dumping</span>
-<span class="tag">Insights Nexus</span>
-<span class="tag">Mimikatz</span>
-</div>
-
-<p><b>Description:</b><br>
-Investigation into Insights Nexus breach involving suspected credential dumping and unauthorized admin access via ManageEngine.
-</p>
-
-</div>
-
----
-
-## Alert Correlation
-
-<div class="section">
-
-<h2>Linked Alerts</h2>
+<h3>Creating a case:</h3>
 
 <p>
-Two alerts were identified and linked within TheHive as part of the same intrusion chain.
+I began by creating a case with a title of "Insights Nexus Breach - Initial Triage & Investigation"
 </p>
 
-<img src="images/alerts-linked.png" alt="Linked Alerts Screenshot">
+<img src="images/case-setup.png" alt="Case Setup">
 
-<p>Four observables were extracted for enrichment and correlation.</p>
+<p>[Severity has been set to: CRITICAL]</p>
+<ul>
+<li>There is Evidence of Mimikatz (often used for credential dumping) and an Admin Login via a web console</li>
+<li>It indicates a high-level of compromise</li>
+</ul>
 
-</div>
+<p>[TLP: Left as default]</p>
+<ul>
+<li>TLP (Traffic Light Protocol): AMBER lets the team know the information stays within the organization/teams.</li>
+</ul>
 
----
+<p>[PAP: Left as default]</p>
+<ul>
+<li>PAP (Permissible Actions Protocol): AMBER lets the analyst we are able to perform enrichment (searching IPs on VirusTotal). It's important that we are careful though, because performing other actions could alert attackers.</li>
+</ul>
 
-## External IP Analysis
+<p>[Tags]</p>
+<ul>
+<li>Credential Dumping</li>
+<li>InsightNexus</li>
+<li>Mimikatz</li>
+</ul>
 
-<div class="section">
+<p>[Description] @ First Glance!!</p>
+<p>
+Investigation into Insight Nexus breach. Detected Mimikatz and an unauthorized Admin login via ManageEngine.
+</p>
 
-<h2>Netstat Investigation</h2>
+<img src="images/case-desc.png" alt="Case Description">
+
+<hr>
+
+<h3>Task 2</h3>
 
 <p>
-Alert ~169058392 contained network telemetry captured after domain rejoin at ~15:42:35.
+Perform triage, enrichment, and correlation in TheHive. In the notes of an alert, you can add useful information for enrichment.
+</p>
+
+<img src="images/alert-1.png">
+<img src="images/alert-2.png">
+
+<h3>Alerts that are specific to Insights Nexus breach</h3>
+
+<ul>
+<li>I have linked two alerts related to the Insight Nexus.</li>
+</ul>
+
+<img src="images/linked-alerts.png">
+
+<p>
+As seen on the snip we have two linked alerts and four observables.
+</p>
+
+<hr>
+
+<h3>Investigating External IPs</h3>
+
+<p>
+Task 3: One of the alerts related to Insights Nexus in TheHive contains some information in the notes. The netstat command output shows some connectivity to external IP addresses. You can validate this finding.
+</p>
+
+<p>
+Alert ~169058392:
+Here's the output of <code>netstat -ano</code> command captured on the same host at ~15:42:35 after it rejoined the domain.
 </p>
 
 <pre>
-Proto  Local Address          Foreign Address        State
-TCP    10.10.5.23:52344       198.51.100.24:443     ESTABLISHED
-TCP    10.10.5.23:52345       203.0.113.18:4444     ESTABLISHED
+Proto  Local Address          Foreign Address        State           PID
+TCP    127.0.0.1:5357         0.0.0.0:0              LISTENING       928
+TCP    10.10.5.23:139         0.0.0.0:0              LISTENING       4
+TCP    10.10.5.23:52344       198.51.100.24:443     ESTABLISHED     5420
+TCP    10.10.5.23:52345       203.0.113.18:4444     ESTABLISHED     1340
+UDP    10.10.5.23:123         *:*                                    1320
+TCP    10.10.5.23:49678       10.10.5.17:445         ESTABLISHED     5420
+TCP    10.10.5.23:49679       10.10.5.18:445         TIME_WAIT       5420
 </pre>
 
-<p>
-Two suspicious external IPs were identified:
-</p>
-
-<ul>
-<li><b>198.51.100.24</b> – HTTPS (443) likely used for encrypted exfiltration</li>
-<li><b>203.0.113.18</b> – Port 4444 commonly associated with C2 / reverse shells</li>
-</ul>
+<img src="images/netstat-1.png">
+<img src="images/netstat-2.png">
 
 <p>
-These ranges are reserved documentation IPs, often used in simulated attack environments.
+In the netstat command, there are two unusual IP addresses: 198.51.100.24 and 203.0.113.18. These are special documentation IP ranges, not normally used on the internet. 198.51.100.24 uses port 443, suggesting HTTPS-based exfiltration. 203.0.113.18 uses port 4444, commonly associated with C2 or reverse shell activity.
 </p>
 
-</div>
+<hr>
 
----
-
-## Attack Chain Mapping (MITRE ATT&CK)
-
-<div class="section">
-
-<h2>Kill Chain Breakdown</h2>
-
-<ul>
-<li><b>Attachment opened</b> → Initial Access → T1566.001 (Spearphishing Attachment)</li>
-<li><b>Downloader executes file in AppData</b> → Execution → T1204.002 (User Execution)</li>
-<li><b>Registry Run key created</b> → Persistence → T1547.001</li>
-<li><b>VaultCli.dll loaded</b> → Credential Access → T1003</li>
-<li><b>Credential exfiltration</b> → Exfiltration → T1041</li>
-</ul>
-
-</div>
-
----
-
-## Mimikatz Analysis
-
-<div class="section">
-
-<h2>Credential Dumping Activity</h2>
+<h3>Mapping to the Cyber Kill Chain</h3>
 
 <p>
-The Mimikatz alert confirmed LSASS memory dumping behavior consistent with credential harvesting.
+A user opens an attachment, which executes a downloader that writes an .exe file to %AppData%, creates a Run registry key, and later loads VaultCli.dll via a suspicious tool, exfiltrating credentials to an external IP. Your task is to map each step of the attack to the kill chain phase.
 </p>
 
+<p><b>Task 1:</b> Map the file download, registry, and exfiltration activity to MITRE ATT&CK.</p>
+
 <ul>
-<li><b>Technique:</b> T1003 (OS Credential Dumping)</li>
-<li><b>Sub-technique:</b> T1003.001 (LSASS Memory)</li>
+<li>Attachment is opened → Initial Access → T1566.001</li>
+<li>Downloader writes .exe to %AppData% → Execution → T1204.002</li>
+<li>Creates a Run registry key → Persistence → T1547.001</li>
+<li>Loads VaultCli.dll → Credential Access → T1003</li>
+<li>Exfiltration → T1041</li>
 </ul>
 
-</div>
+<p><b>Task 2:</b> Mimikatz MITRE ID</p>
 
----
-
-<a class="back" href="index.html">← Back to Portfolio</a>
+<ul>
+<li>Primary Technique: T1003</li>
+<li>Sub-technique: T1003.001 (LSASS Memory)</li>
+</ul>
 
 </div>
 
